@@ -1,0 +1,32 @@
+﻿@model IEnumerable<ContactManagement.Models.Contact>
+
+<h2>Contacts</h2>
+<p>
+    <a class="btn btn-primary" href="@Url.Action("Create")">Add New Contact</a>
+</p>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var contact in Model)
+        {
+            <tr>
+                <td>@contact.Name</td>
+                <td>@contact.Email</td>
+                <td>@contact.PhoneNumber</td>
+                <td>@contact.Address</td>
+                <td>
+                    <a class="btn btn-warning btn-sm" href="@Url.Action("Edit", new { id = contact.ID })">Edit</a>
+                    <a class="btn btn-danger btn-sm" href="@Url.Action("Delete", new { id = contact.ID })">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
